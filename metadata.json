@@ -1,7 +1,0 @@
-{
-  "name": "TOLBI OS",
-  "description": "A sophisticated agricultural monitoring dashboard for corn producers, providing remote sensing insights into yield, planting density, and soil fertility using Mapbox visualizations and Gemini-powered decision support.",
-  "requestFramePermissions": [
-    "geolocation"
-  ]
-}
