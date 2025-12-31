@@ -1,26 +1,87 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title>Lovable App</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
 
-    <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="Lovable App" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOLBI OS</title>
+    <script>
+      (function() {
+        var isSecurityError = function(msg) {
+          msg = String(msg || '');
+          return /Location|cross-origin|SecurityError|href|named property|blocked a frame|top\.location/i.test(msg);
+        };
+        var handler = function(e) {
+          var errorMsg = e.message || (e.error && e.error.message) || (e.reason && (e.reason.message || String(e.reason))) || String(e);
+          if (isSecurityError(errorMsg)) {
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+            if (e.stopPropagation) e.stopPropagation();
+            if (e.preventDefault) e.preventDefault();
+            return true;
+          }
+        };
+        window.addEventListener('error', handler, true);
+        window.addEventListener('unhandledrejection', handler, true);
+      })();
+    </script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reactflow@11.10.4/dist/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+          font-family: 'Plus Jakarta Sans', sans-serif; 
+          background-color: #F9FAFB; 
+          -webkit-font-smoothing: antialiased;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .leaflet-container { background: #0f172a !important; }
+        .leaflet-control-zoom { border: none !important; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1) !important; margin-top: 100px !important; }
+        .leaflet-control-zoom-in, .leaflet-control-zoom-out { border-radius: 12px !important; border: 1px solid #e2e8f0 !important; font-weight: bold !important; }
+        
+        .prose pre { background-color: #f8fafc !important; color: #1e293b !important; border: 1px solid #e2e8f0; border-radius: 1rem; }
+        .prose table { border-radius: 1rem; overflow: hidden; border: 1px solid #e2e8f0; font-size: 0.8rem; }
+        .prose thead { background-color: #f1f5f9; }
+        .prose th { padding: 0.75rem !important; text-transform: uppercase; letter-spacing: 0.05em; }
+        .prose td { padding: 0.75rem !important; }
+        .prose strong { color: #059669; }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
-
-  <body>
+        /* Styles ReactFlow Tolbi Custom */
+        .react-flow__node { border-radius: 16px; border: 1px solid #e2e8f0; padding: 0; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        .react-flow__edge-path { stroke: #006B3D; stroke-width: 3; }
+        .react-flow__handle { background: #006B3D; border: 2px solid white; width: 8px; height: 8px; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.2.0",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "@google/genai": "https://esm.sh/@google/genai@1.34.0",
+    "recharts": "https://esm.sh/recharts@2.12.7?deps=react@18.2.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.378.0?deps=react@18.2.0",
+    "leaflet": "https://esm.sh/leaflet@1.9.4",
+    "reactflow": "https://esm.sh/reactflow@11.10.4?deps=react@18.2.0,react-dom@18.2.0",
+    "geotiff": "https://esm.sh/geotiff@2.1.1",
+    "proj4": "https://esm.sh/proj4@2.11.0",
+    "marked": "https://esm.sh/marked@12.0.0",
+    "jspdf": "https://esm.sh/jspdf@2.5.1",
+    "qrcode": "https://esm.sh/qrcode@1.5.3",
+    "jszip": "https://esm.sh/jszip@3.10.1",
+    "file-saver": "https://esm.sh/file-saver@2.0.5",
+    "react-dom/": "https://esm.sh/react-dom@18.2.0/",
+    "@tanstack/react-query": "https://esm.sh/@tanstack/react-query@^5.90.16",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<script type="module" src="/index.tsx"></script>
+</body>
 </html>
