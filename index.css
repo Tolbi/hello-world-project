@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { 
+  font-family: 'Plus Jakarta Sans', sans-serif; 
+  background-color: #F9FAFB; 
+  -webkit-font-smoothing: antialiased;
+}
+
+.custom-scrollbar::-webkit-scrollbar { width: 5px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+.leaflet-container { background: #0f172a !important; }
+.leaflet-control-zoom { border: none !important; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1) !important; margin-top: 100px !important; }
+.leaflet-control-zoom-in, .leaflet-control-zoom-out { border-radius: 12px !important; border: 1px solid #e2e8f0 !important; font-weight: bold !important; }
+
+.prose pre { background-color: #f8fafc !important; color: #1e293b !important; border: 1px solid #e2e8f0; border-radius: 1rem; }
+.prose table { border-radius: 1rem; overflow: hidden; border: 1px solid #e2e8f0; font-size: 0.8rem; }
+.prose thead { background-color: #f1f5f9; }
+.prose th { padding: 0.75rem !important; text-transform: uppercase; letter-spacing: 0.05em; }
+.prose td { padding: 0.75rem !important; }
+.prose strong { color: #059669; }
+
+/* ReactFlow Tolbi Custom */
+.react-flow__node { border-radius: 16px; border: 1px solid #e2e8f0; padding: 0; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+.react-flow__edge-path { stroke: #006B3D; stroke-width: 3; }
+.react-flow__handle { background: #006B3D; border: 2px solid white; width: 8px; height: 8px; }
