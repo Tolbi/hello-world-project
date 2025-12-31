@@ -1,6 +1,10 @@
-
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { Producer, ChatMessage, KnowledgeFile } from "../types";
+
+const getApiKey = () => {
+  // Use Vite's import.meta.env for environment variables
+  return (import.meta as any).env?.GEMINI_API_KEY || '';
+};
 
 export async function* chatWithInsights(
   message: string,
@@ -9,7 +13,7 @@ export async function* chatWithInsights(
   knowledgeBase: KnowledgeFile[],
   systemInstruction: string
 ) {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: getApiKey() });
   
   // Construction du contexte des données producteurs
   const producerContext = `DONNÉES PRODUCTEURS ACTUELLES: ${JSON.stringify(producers)}`;
@@ -59,7 +63,7 @@ export async function* chatWithInsights(
 // Anciennes fonctions gardées pour compatibilité si nécessaire
 export async function getSeasonInsights(producers: Producer[]) {
   const prompt = `Analyse les données de production suivantes: ${JSON.stringify(producers)}. Fais un rapport synthétique en Français.`;
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const ai = new GoogleGenAI({ apiKey: getApiKey() });
   const response = await ai.models.generateContent({
     model: 'gemini-3-flash-preview',
     contents: prompt,
